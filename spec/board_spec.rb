@@ -51,7 +51,7 @@ describe Board do
     end
   end
 
-  describe 'check_vertical' do
+  describe '#check_vertical' do
     subject(:vertical_check) { described_class.new }
     let(:grid) { vertical_check.instance_variable_get(:@grid) }
 
@@ -70,5 +70,41 @@ describe Board do
     end
   end
 
-  
+  describe '#check_right_diagonal' do
+    subject(:right_check_diagonal) { described_class.new }
+    let(:grid) { right_check_diagonal.instance_variable_get(:@grid) }
+    
+    before do
+      grid[2][6] = 'X'
+      grid[3][5] = 'X'
+      grid[4][4] = 'X'
+      grid[5][3] = 'X'
+    end
+
+    context 'when it matches' do
+      it 'returns true' do
+        result = right_check_diagonal.check_right_diagonal(3, 5, 'X')
+        expect(result).to be_true
+      end
+    end
+  end
+
+  describe '#check_left_diagonal' do
+    subject(:left_check_diagonal) { described_class.new }
+    let(:grid) { left_check_diagonal.instance_variable_get(:@grid) }
+
+    before do
+      grid[6][6] = 'X'
+      grid[5][5] = 'X'
+      grid[4][4] = 'X'
+      grid[3][3] = 'X'
+    end
+
+    context 'when it matches' do
+      it 'returns true' do
+        result = left_check_diagonal.check_left_diagonal(5, 5, 'X')
+        expect(result).to be_true
+      end
+    end
+  end
 end
