@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# rubocop:disable Metrics/BlockLength
+
 require_relative '../lib/game'
 
 describe Game do
@@ -103,3 +107,4 @@ describe Game do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

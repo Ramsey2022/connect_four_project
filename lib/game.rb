@@ -6,7 +6,7 @@ require_relative 'custom_pieces'
 
 # class for game
 class Game
-  include Custom_pieces
+  include CustomPieces
 
   def initialize
     @board = Board.new
@@ -35,7 +35,7 @@ class Game
       column = gets.chomp.to_i - 1
       return column if verify_input(column)
 
-      puts "Invalid input!/n/n"
+      puts 'Invalid input!/n/n'
     end
   end
 
@@ -61,31 +61,31 @@ class Game
   end
 
   def tie?
-    if @turn == 42
-      puts "It's a tie! Try again."
-    end
+    return unless @turn == 42
+
+    puts "It's a tie! Try again."
   end
+end
 
   private
 
-  def intro
-    puts <<~HEREDOC
+def intro
+  puts <<~HEREDOC
     Welcome to Connect Four!
 
     Match 4 to win.
 
-    Enter 1 to continue: 
-    HEREDOC
-    gets.chomp
-  end
+    Enter 1 to continue:#{' '}
+  HEREDOC
+  gets.chomp
+end
 
-  def ask_player_name(number)
-    puts "Enter player#{number} name: "
-    gets.chomp
-  end
+def ask_player_name(number)
+  puts "Enter player#{number} name: "
+  gets.chomp
+end
 
-  def set_player_name
-    @player1.name = ask_player_name(1)
-    @player2.name = ask_player_name(2)
-  end
+def set_player_name
+  @player1.name = ask_player_name(1)
+  @player2.name = ask_player_name(2)
 end

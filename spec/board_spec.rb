@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# rubocop:disable Metrics/BlockLength
+
 require_relative '../lib/board'
 
 describe Board do
@@ -73,7 +77,7 @@ describe Board do
   describe '#check_right_diagonal' do
     subject(:right_check_diagonal) { described_class.new }
     let(:grid) { right_check_diagonal.instance_variable_get(:@grid) }
-    
+
     before do
       grid[2][6] = 'X'
       grid[3][5] = 'X'
@@ -108,3 +112,4 @@ describe Board do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

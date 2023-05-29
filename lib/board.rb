@@ -9,7 +9,7 @@ class Board
   attr_reader :grid
 
   def initialize
-    @grid = Array.new(6) { Array.new(7) { empty_circle} }
+    @grid = Array.new(6) { Array.new(7) { empty_circle } }
   end
 
   def display_board
@@ -31,6 +31,7 @@ class Board
     row = 0
     loop do
       return row if row == 5 || @grid[row + 1][column] != empty_circle
+
       row += 1
     end
   end

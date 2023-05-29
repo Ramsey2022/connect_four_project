@@ -1,5 +1,7 @@
-module Custom_pieces
+# frozen_string_literal: true
 
+# module for custom player colors
+module CustomPieces
   def yellow_circle
     "\e[33m\u25cf\e[0m"
   end
