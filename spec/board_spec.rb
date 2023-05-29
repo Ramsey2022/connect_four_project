@@ -46,7 +46,7 @@ describe Board do
     context 'when it matches' do
       it 'returns true' do
         result = horizontal_check.check_horizontal(0, 1, 'X')
-        expect(result).to be_true
+        expect(result).to be(true)
       end
     end
   end
@@ -64,8 +64,8 @@ describe Board do
 
     context 'when it matches' do
       it 'returns true' do
-        result = vertical_check.check_vertical(2, 1, 'X')
-        expect(result).to be_true
+        result = vertical_check.check_vertical(0, 1, 'X')
+        expect(result).to be(true)
       end
     end
   end
@@ -83,8 +83,8 @@ describe Board do
 
     context 'when it matches' do
       it 'returns true' do
-        result = right_check_diagonal.check_right_diagonal(3, 5, 'X')
-        expect(result).to be_true
+        result = right_check_diagonal.check_right_diagonal(2, 6, 'X')
+        expect(result).to be(true)
       end
     end
   end
@@ -94,16 +94,16 @@ describe Board do
     let(:grid) { left_check_diagonal.instance_variable_get(:@grid) }
 
     before do
-      grid[6][6] = 'X'
-      grid[5][5] = 'X'
-      grid[4][4] = 'X'
-      grid[3][3] = 'X'
+      grid[0][2] = 'X'
+      grid[1][3] = 'X'
+      grid[2][4] = 'X'
+      grid[3][5] = 'X'
     end
 
     context 'when it matches' do
       it 'returns true' do
-        result = left_check_diagonal.check_left_diagonal(5, 5, 'X')
-        expect(result).to be_true
+        result = left_check_diagonal.check_left_diagonal(0, 2, 'X')
+        expect(result).to be(true)
       end
     end
   end
