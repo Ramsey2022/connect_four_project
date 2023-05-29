@@ -4,7 +4,7 @@ require_relative 'custom_pieces'
 
 # class for game grid
 class Board
-  include Custom_pieces
+  include CustomPieces
 
   attr_reader :grid
 
