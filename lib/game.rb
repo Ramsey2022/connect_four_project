@@ -23,7 +23,7 @@ class Game
       @board.display_board
       column = player_input(current_player)
       @board.update_board(@board.available_row(column), column, current_player.symbol)
-      break if game_over?(current_player) || draw?
+      break if game_over?(current_player) || tie?
     end
     @board.display_board
   end

@@ -36,22 +36,32 @@ class Board
   end
 
   def check_horizontal(row, column, symbol)
+    return if column > 3
+
     @grid[row][column] == symbol && @grid[row][column + 1] == symbol && @grid[row][column + 2] == symbol && @grid[row][column + 3] == symbol
   end
 
   def check_vertical(row, column, symbol)
+    return if row > 2
+
     @grid[row][column] == symbol && @grid[row + 1][column] == symbol && @grid[row + 2][column] == symbol && @grid[row + 3][column] == symbol
   end
 
   def check_left_diagonal(row, column, symbol)
+    return if column > 3
+
     @grid[row][column] == symbol && @grid[row + 1][column + 1] == symbol && @grid[row + 2][column + 2] == symbol && @grid[row + 3][column + 3] == symbol
   end
 
   def check_right_diagonal(row, column, symbol)
+    return if column < 3
+
     @grid[row][column] == symbol && @grid[row + 1][column - 1] == symbol && @grid[row + 2][column - 2] == symbol && @grid[row + 3][column - 3] == symbol
   end
 
   def check_diagonals(row, column, symbol)
+    return unless row < 3
+
     check_left_diagonal(row, column, symbol) || check_right_diagonal(row, column, symbol)
   end
 
