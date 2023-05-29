@@ -33,6 +33,42 @@ describe Board do
   end
 
   describe '#check_horizontal' do
-    
+    subject(:horizontal_check) { described_class.new }
+    let(:grid) { horizontal_check.instance_variable_get(:@grid) }
+
+    before do
+      grid[0][1] = 'X'
+      grid[0][2] = 'X'
+      grid[0][3] = 'X'
+      grid[0][4] = 'X'
+    end
+
+    context 'when it matches' do
+      it 'returns true' do
+        result = horizontal_check.check_horizontal(0, 1, 'X')
+        expect(result).to be_true
+      end
+    end
   end
+
+  describe 'check_vertical' do
+    subject(:vertical_check) { described_class.new }
+    let(:grid) { vertical_check.instance_variable_get(:@grid) }
+
+    before do
+      grid[0][1] = 'X'
+      grid[1][1] = 'X'
+      grid[2][1] = 'X'
+      grid[3][1] = 'X'
+    end
+
+    context 'when it matches' do
+      it 'returns true' do
+        result = vertical_check.check_vertical(2, 1, 'X')
+        expect(result).to be_true
+      end
+    end
+  end
+
+  
 end
