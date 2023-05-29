@@ -54,4 +54,8 @@ class Board
   def check_diagonals(row, column, symbol)
     check_left_diagonal(row, column, symbol) || check_right_diagonal(row, column, symbol)
   end
+
+  def check_row(row, column, symbol)
+    check_horizontal(row, column, symbol) || check_vertical(row, column, symbol) || check_diagonals(row, column, symbol)
+  end
 end

@@ -72,4 +72,34 @@ describe Game do
     end
   end
 
+  describe '#game_over?' do
+    context 'when a player wins' do
+      subject(:end_game) { described_class.new }
+      let(:board) { end_game.instance_variable_get(:@board) }
+      let(:player) { instance_double(Player, name: 'Jeff', symbol: 'X') }
+
+      before do
+        allow(board).to receive(:check_row).and_return(true)
+      end
+
+      it 'announces winner' do
+        expect(end_game).to receive(:puts).with('Victory! Jeff wins!')
+        end_game.game_over?(player)
+      end
+    end
+  end
+
+  describe '#tie' do
+    subject(:game_tie) { described_class.new }
+
+    context 'when tie' do
+      before do
+        game_tie.instance_variable_set(:@turn, 42)
+      end
+      it 'announces tie' do
+        expect(game_tie).to receive(:puts).with("It's a tie! Try again.")
+        game_tie.tie?
+      end
+    end
+  end
 end

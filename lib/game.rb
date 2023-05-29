@@ -16,6 +16,7 @@ class Game
   end
 
   def new_game
+    intro
     set_player_name
     loop do
       current_player = player_turn
@@ -45,6 +46,37 @@ class Game
   def player_turn
     @turn += 1
     @turn.odd? ? @player1 : @player2
+  end
+
+  def game_over?(player)
+    6.times do |row|
+      7.times do |column|
+        if @board.check_row(row, column, player.symbol)
+          puts "Victory! #{player.name} wins!"
+          return true
+        end
+      end
+    end
+    false
+  end
+
+  def tie?
+    if @turn == 42
+      puts "It's a tie! Try again."
+    end
+  end
+
+  private
+
+  def intro
+    puts <<~HEREDOC
+    Welcome to Connect Four!
+
+    Match 4 to win.
+
+    Enter 1 to continue: 
+    HEREDOC
+    gets.chomp
   end
 
   def ask_player_name(number)
